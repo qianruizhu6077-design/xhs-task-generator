@@ -15,10 +15,10 @@ export const groups = {
   ],
 
   '3组': [
-    { name: '第二年春', canComment: true, num: 1, commentPriority: 5, canAddV: true },
-    { name: '风灵无畏', canComment: true, num: 2, commentPriority: 1, canAddV: false },
+    { name: '第二年春', canComment: true, num: 1, commentPriority: 3, canAddV: true },
+    { name: '风灵无畏', canComment: true, num: 2, commentPriority: 4, canAddV: false },
     { name: '阿巴阿巴', canComment: true, num: 2, commentPriority: 2, canAddV: true },
-    { name: 'Tom Green', canComment: true, num: 2, commentPriority: 4, canAddV: false },
+    { name: 'Tom Green', canComment: true, num: 2, commentPriority: 5, canAddV: false },
     { name: '春山', canComment: true, num: 1, commentPriority: 1, canAddV: true },
   ],
 }

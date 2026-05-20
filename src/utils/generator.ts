@@ -1,7 +1,18 @@
-import { groups, normalActions, leadActions } from '../data/config'
+import { groups, leadActions } from '../data/config'
 
 function randomItem(arr: string[]) {
   return arr[Math.floor(Math.random() * arr.length)]
+}
+
+function pickNormalAction(ip: string, countMap: Map<string, { fav: number; follow: number }>): string {
+  const counts = countMap.get(ip)!
+  const candidates: string[] = ['点赞']
+  if (counts.fav < 2) candidates.push('点赞➕收藏')
+  if (counts.follow < 1) candidates.push('点赞➕关注')
+  const pick = randomItem(candidates)
+  if (pick === '点赞➕收藏') counts.fav++
+  else if (pick === '点赞➕关注') counts.follow++
+  return pick
 }
 
 function shuffleArray<T>(array: T[]): T[] {
@@ -121,6 +132,8 @@ export function generateTask(groupName: string, ipText: string) {
   ipSet.forEach((currentIp) => {
     // 追踪当前IP下已使用的评论内容，避免重复
     const usedComments = new Set<string>()
+    const normalActionCount = new Map<string, { fav: number; follow: number }>()
+    normalActionCount.set(currentIp, { fav: 0, follow: 0 })
 
     text += `——————\n${currentIp}：\n\n`
 
@@ -160,7 +173,7 @@ export function generateTask(groupName: string, ipText: string) {
           usedComments.add(pick)
           action = pick
         } else {
-          action = randomItem(normalActions)
+          action = pickNormalAction(currentIp, normalActionCount)
         }
         if (shouldComment && ipPrivateMsg.get(currentIp)) action = action.replace('评论', '私信')
         if (shouldComment && member.canAddV) action += '（➕v）'
@@ -177,7 +190,7 @@ export function generateTask(groupName: string, ipText: string) {
             usedComments.add(pick)
             action = pick
           } else {
-            action = randomItem(normalActions)
+            action = pickNormalAction(currentIp, normalActionCount)
           }
           if (shouldComment && ipPrivateMsg.get(currentIp)) action = action.replace('评论', '私信')
           if (shouldComment && member.canAddV) action += '（➕v）'
