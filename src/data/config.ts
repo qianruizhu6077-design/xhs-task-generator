@@ -10,16 +10,16 @@ export const groups = {
     { name: '黛黛 ', canComment: true, num: 1, commentPriority: 2, canAddV: true },
     { name: '^ω^', canComment: false, num: 3, commentPriority: 0, canAddV: false },
     { name: '11111', canComment: false, num: 1, commentPriority: 4, canAddV: false },
-    { name: '差不多先生', canComment: false, num: 1, commentPriority: 0, canAddV: false },
     { name: 'YYC', canComment: false, num: 1, commentPriority: 3, canAddV: false },
   ],
+
 
   '3组': [
     { name: '第二年春', canComment: true, num: 1, commentPriority: 3, canAddV: true },
     { name: '风灵无畏', canComment: true, num: 2, commentPriority: 4, canAddV: false },
     { name: '阿巴阿巴', canComment: true, num: 2, commentPriority: 2, canAddV: true },
     { name: 'Tom Green', canComment: true, num: 2, commentPriority: 5, canAddV: false },
-    { name: '春山', canComment: true, num: 1, commentPriority: 1, canAddV: true },
+    { name: '栖春山', canComment: true, num: 1, commentPriority: 1, canAddV: true },
   ],
 }
 
